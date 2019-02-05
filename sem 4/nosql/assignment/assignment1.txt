@@ -1,0 +1,301 @@
+Harsha KY
+
+PES1201801839
+
+// 1
+use employee
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 2
+  db.employee.insert({
+    id: 1,
+    emp_code: 1,
+    emp_name: 'Harsha',
+    doj: '2018/01/31',
+    salary: 50000
+  })
+  WriteResult({ "nInserted" : 1 })
+
+
+  db.employee.insert({
+    id: 2,
+    emp_code: 2,
+    emp_name: 'Karthik',
+    doj: '2019/01/30',
+    salary: 500000
+  })
+  WriteResult({ "nInserted" : 1 })
+
+
+  db.employee.insert({
+    id: 3,
+    emp_code: 3,
+    emp_name: 'Geralt',
+    doj: '2019/08/23',
+    salary: 983217
+  })
+  WriteResult({ "nInserted" : 1 })
+
+  db.employee.insert({
+    id: 4,
+    emp_code: 4,
+    emp_name: 'Yennefer',
+    doj: '2015/08/30',
+    salary: 5765666
+  })
+  WriteResult({ "nInserted" : 1 })
+
+  db.employee.insert({
+    id: 5,
+    emp_code: 5,
+    emp_name: 'Charlie',
+    doj: '2019/07/28',
+    salary: 1234567
+  })
+  WriteResult({ "nInserted" : 1 })
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 3
+ db.employee.find({}, {_id: 1, emp_code: 1, emp_name: 1}).pretty()
+ {
+ 	"_id" : ObjectId("5c511d569c2f39452655945b"),
+ 	"emp_code" : 1,
+ 	"emp_name" : "Harsha"
+ }
+ {
+ 	"_id" : ObjectId("5c511d879c2f39452655945c"),
+ 	"emp_code" : 2,
+ 	"emp_name" : "Karthik"
+ }
+ {
+ 	"_id" : ObjectId("5c511e349c2f39452655945d"),
+ 	"emp_code" : 3,
+ 	"emp_name" : "Geralt"
+ }
+ {
+ 	"_id" : ObjectId("5c511e3b9c2f39452655945e"),
+ 	"emp_code" : 4,
+ 	"emp_name" : "Yennefer"
+ }
+ {
+ 	"_id" : ObjectId("5c511e469c2f39452655945f"),
+ 	"emp_code" : 5,
+ 	"emp_name" : "Charlie"
+ }
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 4
+db.employee.insert({
+  id: 6,
+  emp_code: 6,
+  emp_name: 'Jonathan Charlie',
+  doj: '2013/07/28',
+  salary: 1234567,
+  deduction: {
+    pf: 812381,
+    pt: 123424
+  }
+})
+WriteResult({ "nInserted" : 1 })
+
+
+db.employee.insert({
+  id: 7,
+  emp_code: 7,
+  emp_name: 'Cristiano Ronaldo',
+  doj: '2010/05/12',
+  salary: 500000,
+  deduction: {
+    pf: 812381,
+    pt: 9876
+  }
+})
+WriteResult({ "nInserted" : 1 })
+
+db.employee.insert({
+  id: 8,
+  emp_code: 8,
+  emp_name: 'Lionel Messi',
+  doj: '2016/08/12',
+  salary: 5000009,
+  deduction: {
+    pf: 45678,
+    pt: 987665
+  }
+})
+WriteResult({ "nInserted" : 1 })
+
+db.employee.insert({
+  id: 9,
+  emp_code: 9,
+  emp_name: 'Sachin',
+  doj: '2016/08/12',
+  salary: 90000,
+  deduction: {
+    pf: 4556,
+    pt: 9875
+  }
+})
+WriteResult({ "nInserted" : 1 })
+
+db.employee.insert({
+  id: 10,
+  emp_code: 10,
+  emp_name: 'Jackson',
+  doj: '2016/08/12',
+  salary: 9000,
+  deduction: {
+    pf: 4556,
+    pt: 987
+  }
+})
+WriteResult({ "nInserted" : 1 })
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 5
+db.employee.find({}, {_id: 1, "deduction.pf":1, "deduction.pt":1})
+{ "_id" : ObjectId("5c511d569c2f39452655945b") }
+{ "_id" : ObjectId("5c511d879c2f39452655945c") }
+{ "_id" : ObjectId("5c511e349c2f39452655945d") }
+{ "_id" : ObjectId("5c511e3b9c2f39452655945e") }
+{ "_id" : ObjectId("5c511e469c2f39452655945f") }
+{ "_id" : ObjectId("5c5121119c2f394526559460"), "deduction" : { "pf" : 812381, "pt" : 123424 } }
+{ "_id" : ObjectId("5c51218a9c2f394526559461"), "deduction" : { "pf" : 45678, "pt" : 987665 } }
+{ "_id" : ObjectId("5c51225e9c2f394526559462"), "deduction" : { "pf" : 45678, "pt" : 987665 } }
+{ "_id" : ObjectId("5c5123019c2f394526559463"), "deduction" : { "pf" : 4556, "pt" : 9875 } }
+{ "_id" : ObjectId("5c51233a9c2f394526559464"), "deduction" : { "pf" : 4556, "pt" : 987 } }
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 6
+db.employee.find({}, {_id: 1, "deduction.pf":1, doj:1, salary:1})
+{ "_id" : ObjectId("5c511d569c2f39452655945b"), "doj" : "2018/01/31", "salary" : 50000 }
+{ "_id" : ObjectId("5c511d879c2f39452655945c"), "doj" : "2019/01/30", "salary" : 500000 }
+{ "_id" : ObjectId("5c511e349c2f39452655945d"), "doj" : "2019/08/23", "salary" : 983217 }
+{ "_id" : ObjectId("5c511e3b9c2f39452655945e"), "doj" : "2015/08/30", "salary" : 5765666 }
+{ "_id" : ObjectId("5c511e469c2f39452655945f"), "doj" : "2019/07/28", "salary" : 1234567 }
+{ "_id" : ObjectId("5c5121119c2f394526559460"), "doj" : "2013/07/28", "salary" : 1234567, "deduction" : { "pf" : 812381 } }
+{ "_id" : ObjectId("5c51218a9c2f394526559461"), "doj" : "2010/05/12", "salary" : 500000, "deduction" : { "pf" : 45678 } }
+{ "_id" : ObjectId("5c51225e9c2f394526559462"), "doj" : "2016/08/12", "salary" : 5000009, "deduction" : { "pf" : 45678 } }
+{ "_id" : ObjectId("5c5123019c2f394526559463"), "doj" : "2016/08/12", "salary" : 90000, "deduction" : { "pf" : 4556 } }
+{ "_id" : ObjectId("5c51233a9c2f394526559464"), "doj" : "2016/08/12", "salary" : 9000, "deduction" : { "pf" : 4556 } }
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 7
+db.employee.find({salary:{$eq:9000}})
+{ "_id" : ObjectId("5c51233a9c2f394526559464"), "id" : 10, "emp_code" : 10, "emp_name" : "Jackson", "doj" : "2016/08/12", "salary" : 9000, "deduction" : { "pf" : 4556, "pt" : 987 } }
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 8
+db.employee.find({salary:{$gt:9000, $lte: 12000}})
+{ "_id" : ObjectId("5c511d569c2f39452655945b"), "id" : 1, "emp_code" : 1, "emp_name" : "Harsha", "doj" : "2018/01/31", "salary" : 50000 }
+{ "_id" : ObjectId("5c5123019c2f394526559463"), "id" : 9, "emp_code" : 9, "emp_name" : "Sachin", "doj" : "2016/08/12", "salary" : 90000, "deduction" : { "pf" : 4556, "pt" : 9875 } }
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 9
+db.departments.insert(
+    [
+        {
+            emp_id: "1112",
+            dep_id: "asdg",
+            no_of_dependents: 2,
+            age: 50
+        },
+        {
+            emp_id: "1113",
+            dep_id: "aetnhesa",
+            no_of_dependents: 2,
+            age: 70
+        },
+        {
+            emp_id: "1114",
+            dep_id: "aEFASFB",
+            no_of_dependents: 2,
+            age: 40
+        },
+        {
+            emp_id: "1115",
+            dep_id: "ewrhtdahf",
+            no_of_dependents: 2,
+            age: 30
+        },
+        {
+            emp_id: "1116",
+            dep_id: "ADHSeaTRHE",
+            no_of_dependents: 2,
+            age: 40
+        }
+    ]
+)
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 5,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 10
+db.createCollection('insurance')
+
+db.dependents.find(
+    {
+        age: {
+            $gt: 60
+        }
+    }
+)
+
+db.insurance.insert(
+    {
+        insurance: {
+            insurance_id: 1234,
+            emp_id: "1113",
+            insurance_date: Date(),
+            insurance_type: "Old",
+            insurance_premium: 1000,
+        }
+    }
+)
+
+db.insurance.find()
+{ "_id" : ObjectId("5c51237564ef8c824084ae16"), "insurance" : { "insurance_id"
+: 1234, "emp_id" : "1113", "insurance_date" : "Wed Jan 30 2019 09:39:25
+GMT+0530 (India Standard Time)", "insurance_type" : "Old", "insurance_premium" : 1000 } }
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+// 11
+db.createCollection('education')
+
+db.departments.find(
+    {
+        age: {
+            $lt: 25
+        }
+    }
+)
+
+db.education.insert(
+    {
+        insurance: {
+            emp_id: "1113",
+            children_id: "23234",
+            education_institute: "PES",
+            fees: 23423
+        }
+    }
+)
+{ "_id" : ObjectId("5c511e7b64ef8c824084ae13"), "emp_id" : "1115", "dep_id" : "ewrhtdahf", "no_of_dependents" : 2, "age" : 20 }
