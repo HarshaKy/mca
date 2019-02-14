@@ -1,4 +1,6 @@
-// assignment 2
+Harsha ky
+PES1201801839
+Assignment 2
 
 // 1.
 db.createCollection('employees')
