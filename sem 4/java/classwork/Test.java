@@ -22,3 +22,6 @@ public class Test { // public class must have same name as .java file
     // Parent p = new Parent();
   }
 }
+
+// if user is defining constructor inside the class, there wont be a default
+// constructor created 
