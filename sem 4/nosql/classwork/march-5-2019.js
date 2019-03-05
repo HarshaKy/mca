@@ -82,3 +82,8 @@ db.runCommand({
 
 // drop a collection using name
 db.asdf1.drop()
+
+// limit number of results in db.find()
+use employee
+
+db.employee.find().limit(4).pretty()
