@@ -72,3 +72,13 @@ db.example.insert({
 show dbs
 
 db.runCommand({dropDatabase: 1})
+
+// create a collection
+db.runCommand({
+  create: "asdf1",
+  capped: true,
+  size: 50241231
+})
+
+// drop a collection using name
+db.asdf1.drop()
