@@ -48,3 +48,27 @@ db.mycol.insert([
     _id: 5
   }
 ])
+
+// administrative commands
+
+// rename collection
+db.adminCommand(
+  {
+     renameCollection: "mycol",
+     to: "testdb"
+  }
+)
+
+// drop db
+use test
+
+db.createCollection('example')
+
+db.example.insert({
+  _id: 1,
+  a: "asdf"
+})
+
+show dbs
+
+db.runCommand({dropDatabase: 1})
