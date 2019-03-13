@@ -1,3 +1,4 @@
+// SCENARIO ONE
 // 1. Create a document called Invoice
 db.createCollection('invoice')
 
@@ -75,14 +76,6 @@ db.invoice.insert([
   }
 ])
 
-// db.invoice.insert({
-//   id: 11,
-//   item: "Asus ROG Motherboard",
-//   qty: 250,
-//   rate: 19000,
-//   date: new Date("2016-05-18")
-// })
-
 // 3. Group by the invoice date field, and display the total cost, average quantity and number of an
 // invoice in the same date.
 db.invoice.aggregate(
@@ -96,7 +89,49 @@ db.invoice.aggregate(
         }
       }
    ]
-)
+).pretty()
 
 // 4. Group by the invoice date and then by item field, and display the total cost, average quantity
 // and number of an invoice in the same date.
+db.invoice.aggregate(
+   [
+      {
+        $group : {_id : {date : "$date", item : "$item"},
+           totalCost: { $sum: { $multiply: [ "$rate", "$qty" ] } },
+           avgQty: { $avg: "$qty" },
+           count: { $sum: 1 }
+        }
+     }
+  ]
+).pretty()
+
+// 5. Group by the invoice date and then by item field, and display the total cost, average quantity
+// and number of an invoice in the same date for those documents which invoice date is
+// 05/12/2014.
+db.invoice.aggregate(
+   [
+    {
+	$match : {date : "05/12/2014"}
+    },
+      {
+        $group : {_id : {date : "$date", item : "$item"},
+           totalCost: { $sum: { $multiply: [ "$rate", "$qty" ] } },
+           avgQty: { $avg: "$qty" },
+           count: { $sum: 1 }
+        }
+     }
+  ]
+).pretty()
+
+// 6. Group the documents by the item to retrieve the distinct item values
+ db.invoice.aggregate([{ $group : { _id : "$item" }}]).pretty()
+
+// 7. Group the invoice date of the documents by the item.
+db.invoice.aggregate(
+   [
+     { $group : { _id : "$item", Date: { $push: "$date" } } }
+   ]
+).pretty();
+
+// 8. Show the documents 4 to 8
+db.invoice.find().skip(3).limit(5).pretty()
