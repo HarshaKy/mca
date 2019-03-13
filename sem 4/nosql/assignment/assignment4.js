@@ -75,5 +75,28 @@ db.invoice.insert([
   }
 ])
 
+// db.invoice.insert({
+//   id: 11,
+//   item: "Asus ROG Motherboard",
+//   qty: 250,
+//   rate: 19000,
+//   date: new Date("2016-05-18")
+// })
+
 // 3. Group by the invoice date field, and display the total cost, average quantity and number of an
 // invoice in the same date.
+db.invoice.aggregate(
+   [
+      {
+        $group : {
+           _id : { month: { $month: "$date" }, day: { $dayOfMonth: "$date" }, year: { $year: "$date" } },
+           totalPrice: { $sum: { $multiply: [ "$rate", "$qty" ] } },
+           averageQuantity: { $avg: "$qty" },
+           count: { $sum: 1 }
+        }
+      }
+   ]
+)
+
+// 4. Group by the invoice date and then by item field, and display the total cost, average quantity
+// and number of an invoice in the same date.
