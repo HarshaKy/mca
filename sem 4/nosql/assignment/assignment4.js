@@ -135,3 +135,134 @@ db.invoice.aggregate(
 
 // 8. Show the documents 4 to 8
 db.invoice.find().skip(3).limit(5).pretty()
+
+
+// SCENARIO TWO
+//1. Create a document called Employee
+db.createCollection('employee')
+
+// 2. Insert 10 documents
+db.employee.insert([
+  {
+    id: 1,
+    emp_code: "AX401",
+    emp_name: "Karthik D",
+    doj: new Date("2018-06-21"),
+    salary: 200000
+  },
+  {
+    id: 2,
+    emp_code: "AX203",
+    emp_name: "Harsha K Y",
+    doj: new Date("2014-06-22"),
+    salary: 500000
+  },
+  {
+    id: 3,
+    emp_code: "AX1000",
+    emp_name: "Jeevan J",
+    doj: new Date("2019-08-23"),
+    salary: 250000
+  },
+  {
+    id: 4,
+    emp_code: "AX001",
+    emp_name: "Bill Gates",
+    doj: new Date("1997-04-21"),
+    salary: 100000
+  },
+  {
+    id: 5,
+    emp_code: "AX010",
+    emp_name: "Vineeth C",
+    doj: new Date("2010-05-12"),
+    salary: 100000
+  },
+  {
+    id: 6,
+    emp_code: "AX111",
+    emp_name: "Shruti K",
+    doj: new Date("2013-12-11"),
+    salary: 800000
+  },
+  {
+    id: 7,
+    emp_code: "AX101",
+    emp_name: "Jacques",
+    doj: new Date("1999-08-21"),
+    salary: 100000
+  },
+  {
+    id: 8,
+    emp_code: "AX221",
+    emp_name: "Punit",
+    doj: new Date("2004-08-21"),
+    salary: 150000
+  },
+  {
+    id: 9,
+    emp_code: "AX551",
+    emp_name: "Setevie G",
+    doj: new Date("2007-07-07"),
+    salary: 100000
+  },
+  {
+    id: 10,
+    emp_code: "AX991",
+    emp_name: "Mark Ronson",
+    doj: new Date("2008-01-21"),
+    salary: 123456
+  }
+])
+
+// 3. Include the _id, emp_code and emp_name in the output document
+db.employee.aggregate([{$project : {emp_code : 1, emp_name : 1}}]).pretty()
+
+// 4. Update the document to have an embedded document called deduction that consists of pf, pt, it
+db.employee.updateOne({emp_name: "Harsha K Y"}, {
+  $set: {
+    deduction: {
+      pf: 4000,
+      pt: 3000,
+      it: 200
+    }
+  }
+})
+
+db.employee.updateOne({emp_name: "Karthik D"}, {
+  $set: {
+    deduction: {
+      pf: 3000,
+      pt: 2000,
+      it: 100
+    }
+  }
+})
+
+db.employee.updateOne({emp_name: "Jeevan J"}, {
+  $set: {
+    deduction: {
+      pf: 3000,
+      pt: 2000,
+      it: 100
+    }
+  }
+})
+
+// 5. Include the _id and deduction detail of pf in the output document
+db.employee.aggregate([{$project: {_id: 1, deduction: 1}}]).pretty()
+
+// 6. Include the day, month and year taken from doj, emp_code, pf and salary
+db.employee.aggregate([{$project: {doj: 1, emp_code: 1, "deduction.pf": 1, salary: 1}}]).pretty()
+
+// 7. Display the documents that have the salary equal to 90000
+db.employee.find({salary: {$eq: 90000}}).pretty()
+
+// 8. Select the documents where the salary is greater than 9000 and less than or equal to 12000.
+// Then sends the result for grouping to perform a count.
+db.employee.aggregate([
+  { $match : { salary : { $gt : 9000, $lte : 12000 } } },
+  { $group: { _id: null, count: { $sum: 1 } } }
+]);
+
+// 9. 
