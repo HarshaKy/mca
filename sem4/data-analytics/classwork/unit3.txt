@@ -8,4 +8,3 @@ regression:
 find whether there is an association between two vairables
 change in x results in a change in y
 
-regression analysis:
