@@ -10,11 +10,7 @@ abstract class Button extends FormLayout{
 	String formName, outline, edge, font, style, colorFill, caption;
 	int fontSize;
 	double width, height;
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 8c0a591578664cb683dbafba8e7c96ac1e3cfe15
 	abstract void buttonCaption();
 
 	public void buttonProperties() {
@@ -50,11 +46,7 @@ class Reservation extends Button {
 }
 
 class CancelRes extends Button {
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 8c0a591578664cb683dbafba8e7c96ac1e3cfe15
 	void formProperties() {
 		this.formName = "Cancellation Page";
 	}
@@ -73,11 +65,7 @@ class MainClass {
 		r.formProperties();
 		r.buttonProperties();
 		r.buttonCaption();
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 8c0a591578664cb683dbafba8e7c96ac1e3cfe15
 
 		r.displayForm();
 		System.out.println("--------------------------");
@@ -90,8 +78,4 @@ class MainClass {
 
 		c.displayForm();
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 8c0a591578664cb683dbafba8e7c96ac1e3cfe15
