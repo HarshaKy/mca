@@ -1,0 +1,11 @@
+// notes 
+classification vs regression
+
+how much? - regression
+predict whether a patient has a disease or not - classification
+
+regression: 
+find whether there is an association between two vairables
+change in x results in a change in y
+
+regression analysis:
