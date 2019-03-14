@@ -26,7 +26,11 @@ class HomePc extends Functionalities {
 }
 
 class WebServer extends Functionalities {
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 8c0a591578664cb683dbafba8e7c96ac1e3cfe15
 	void special() {
 		System.out.println("Here goes WebServer's special properties");
 	}
@@ -63,4 +67,8 @@ class MainClassComputer {
 		p.delete();
 		p.special();
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8c0a591578664cb683dbafba8e7c96ac1e3cfe15
