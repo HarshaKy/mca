@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class Bakery {
-        int wine, cold, bear, juice;
-
+    int wine, cold, bear, juice;
+    String username, password;
+    Scanner input = new Scanner(System.in);
     
     final public void setRates() {
-        
-        Scanner input = new Scanner(System.in);
+          
         boolean quit = false;
         int sum = 0;
         
@@ -66,10 +66,45 @@ public class Bakery {
     
 }
 
-class Main extends Bakery {
+class UserAuth extends Bakery {
+    
+    final public void register() {
+        System.out.println("register a new user: ");
+        System.out.println("enter username: ");
+        this.username = input.nextLine();
+        System.out.println("enter password: ");
+        this.password = input.nextLine();
+    }
+
+    public Boolean login() {
+        System.out.println("login: ");
+        System.out.println("enter username: ");
+        String loginUsr = input.nextLine();
+        System.out.println("enter password: ");
+        String loginPwd = input.nextLine();
+
+        if (this.username.equals(loginUsr)) {
+            if (this.password.equals(loginPwd)) {
+                return true;
+            } 
+        }
+
+        return false;
+    }
+}
+
+class Main extends UserAuth {
     public static void main(String[] args) {
-        Bakery b = new Bakery();
+        Main m = new Main();
+        
+        m.register();
+        
+        if(m.login()) {
+            System.out.println("Succesful login");
+        } else {
+            System.out.println("invalid login details");
+        }
         System.out.println("Set rates for items: ");
-        b.setRates();
+        // b.setRates();
     }
 }
