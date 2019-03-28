@@ -1,3 +1,6 @@
+import java.io.*;
+// unchecked exceptions
+
 class DivZero {
 	public void divide() {
 		int num1 = 10;
@@ -51,13 +54,29 @@ class NumberFormat {
 	} 
 } 
 
+// checked exceptions
+
+// class FileExce { 
+// 	public void IOEx() throws IOException { 
+// 		FileReader file = new FileReader("a.txt"); 
+// 		BufferedReader fileInput = new BufferedReader(file); 
+		 
+// 		for (int counter = 0; counter < 3; counter++) 
+// 			System.out.println(fileInput.readLine()); 
+		
+// 		fileInput.close(); 
+// 	} 
+// }
+
 class Exce {
 	public static void main(String[] args) {
 		DivZero dz = new DivZero();
 		Arr a = new Arr();
 		StringIndex s = new StringIndex();
 		NumberFormat n = new NumberFormat();
+		// FileExce f = new FileExce();
 
+		// f.IOEx();
 		n.NumFormatExce();
 		s.StringExce();
 		a.OutOfBound();
