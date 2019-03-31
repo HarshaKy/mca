@@ -1,0 +1,35 @@
+Thread class methods: 
+
+1. activeCount(): java.lang.Thread.activeCount() Returns an estimate of the number of active threads in the current thread’s thread group and its subgroups
+
+2. checkAccess(): java.lang.Thread.checkAccess() Determines if the currently running thread has permission to modify this thread
+
+3. clone(): java.lang.Thread.clone() Throws CloneNotSupportedException as a Thread can not be meaningfully cloned
+
+4. currentThread(): java.lang.Thread.currentThread() Returns a reference to the currently executing thread object
+
+5. dumpStack(): java.lang.Thread.dumpStack() Prints a stack trace of the current thread to the standard error stream
+
+6. enumerate(Thread[] tarray): java.lang.Thread.enumerate(Thread[] tarray) Copies into the specified array every active thread in the current thread’s thread group and its subgroups
+
+7. getAllStackTraces(): java.lang.Thread.getAllStackTraces() Returns a map of stack traces for all live threads
+
+8. getContextClassLoader(): java.lang.Thread.getContextClassLoader() Returns the context ClassLoader for this Thread
+
+9.  getDefaultUncaughtExceptionHandler(): java.lang.Thread.getDefaultUncaughtExceptionHandler() Returns the default handler invoked when a thread abruptly terminates due to an uncaught exception
+
+10. getId(): java.lang.Thread.getId() Returns the identifier of this Thread
+
+11. getName(): java.lang.Thread.getName() Returns this thread’s name
+
+12. getPriority(): java.lang.Thread.getPriority() Returns this thread’s priority
+
+13. getStackTrace(): java.lang.Thread.getStackTrace() Returns an array of stack trace elements representing the stack dump of this thread
+
+14. getState(): java.lang.Thread.getState() Returns the state of this thread
+
+15. getThreadGroup(): java.lang.Thread.getThreadGroup() Returns the thread group to which this thread belongs
+
+16. getUncaughtExceptionHandler(): java.lang.Thread.getUncaughtExceptionHandler() Returns the handler invoked when this thread abruptly terminates due to an uncaught exception
+
+17.
