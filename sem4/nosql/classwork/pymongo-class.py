@@ -7,8 +7,8 @@ db = con.pes
 coll = db.employee
 
 def insert() :
-	empid = input("enter id")
-	empname = input("enter name")
+	empid = input("enter id: ")
+	empname = input("enter name:  ")
 
 	db.emp.insert_one(
 		{
