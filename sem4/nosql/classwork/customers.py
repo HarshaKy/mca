@@ -56,6 +56,13 @@ def deleteByID(cID):
 	)
 	# print(docs.modified_count, "document(s) deleted.")
 
+# def addNewField():
+# 	docs = db.customers.find()
+
+	
+
+# addNewField()
+
 # num = int(input("enter number of records you want to insert: "))
 # for i in range(num):
 # 	insert()
