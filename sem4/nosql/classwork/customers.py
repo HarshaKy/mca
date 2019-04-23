@@ -11,13 +11,15 @@ def insert():
 	cAddress = input("Enter address: ")
 	cPhNo = int(input("Enter phone number: "))
 	cAge = int(input("Enter age: "))
+	cID = input("Enter id: ")
 
 	db.customers.insert_one(
 		{
 			"name": cName,
 			"address": cAddress,
 			"phone": cPhNo,
-			"age": cAge
+			"age": cAge,
+			"cid": cID
 		}
 	)
 
@@ -41,6 +43,19 @@ def findByPlace(address) :
 	for i in docs:
 		print(i)
 
+def updateByPlace(address): 
+	docs = db.customers.update_many(
+		{ "address": "Somewhere" }, 
+		{ "$inc": { "age": 2 } }
+	)
+	print(docs.modified_count, "documents updated.")
+
+def deleteByID(cID):
+	db.customers.delete_one(
+		{ "cid": cID }
+	)
+	# print(docs.modified_count, "document(s) deleted.")
+
 # num = int(input("enter number of records you want to insert: "))
 # for i in range(num):
 # 	insert()
@@ -53,3 +68,7 @@ def findByPlace(address) :
 # findByAgeGreaterThan(50)
 
 # findByPlace("Somewhere")
+
+# updateByPlace("Somewhere")
+
+# deleteByID("101")
