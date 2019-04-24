@@ -22,10 +22,20 @@ def insert():
 			"sem": sem,
 			"class": sClass,
 			"isa": isa,
-			"caType": caType,
-			"caMarks": caMarks
+			"ca": {
+				"caType": caType,
+				"caMarks": caMarks
+			}
 		}
 	)
 
-for i in range(10):
-	insert()
+def findByMarksGreaterThan(marks):
+	docs = db.student.find( { "$and": [ { "ca.caType": { "$eq": "Assignment" } }, { "ca.caMarks": { "$gt": marks } } ] } )
+
+	for i in docs: 
+		print(i)
+
+# for i in range(10):
+# 	insert()
+
+findByMarksGreaterThan(30)
