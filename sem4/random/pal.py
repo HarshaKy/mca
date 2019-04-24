@@ -5,10 +5,7 @@ for i in str1:
 	if i.isalpha():
 		newStr = newStr + i
 
-revStr = newStr[::-1]
-print(revStr)
-
-if newStr == revStr:
+if newStr == newStr[::-1]:
 	print("it's a palindrome m8")
 else:
 	print("not a palindrome m8")
