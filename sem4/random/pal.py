@@ -5,7 +5,7 @@ for i in str1:
 	if i.isalpha():
 		newStr = newStr + i
 
-if newStr == newStr[::-1]:
+if newStr.lower() == newStr[::-1].lower():
 	print("it's a palindrome m8")
 else:
 	print("not a palindrome m8")
