@@ -1,3 +1,5 @@
+# scenario one
+
 import pymongo
 from pymongo import MongoClient
 
@@ -35,7 +37,40 @@ def findByMarksGreaterThan(marks):
 	for i in docs: 
 		print(i)
 
-# for i in range(10):
-# 	insert()
+def sortISAQuiz():
+	docs = db.student.find().sort([("isa", pymongo.ASCENDING), ("ca.caMarks", pymongo.ASCENDING)])
+
+	for i in docs:
+		print(i)
+
+def findTotalMarks():
+	docs = db.student.aggregate([
+		{
+			"$group": {
+				"_id": "$name",
+				"totalMarks": { "$sum": "$ca.caMarks" }
+			}
+		}
+	])
+
+	for i in docs:
+		print(i)
+
+def updateAllStudents():
+	docs = db.student.update_many(
+		{},
+		{ "$inc": { "sem": 1 } }
+	)
+
+	print(docs.modified_count, "documents updated.")
+
+for i in range(10):
+	insert()
 
 findByMarksGreaterThan(30)
+
+sortISAQuiz()
+
+findTotalMarks()
+
+updateAllStudents()
