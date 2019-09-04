@@ -10,5 +10,7 @@
 	<classpathentry kind="lib" path="/home/mcastudent/Downloads/SOFTWARE NEEDED/AJP/tomcat-jsp-api-8.5.8.jar"/>
 	<classpathentry kind="lib" path="/home/mcastudent/Downloads/SOFTWARE NEEDED/AJP/tomcat-servlet-api-8.5.0.jar"/>
 	<classpathentry kind="lib" path="/home/harshaky/mysql-connector-java-8.0.17/mysql-connector-java-8.0.17.jar"/>
+	<classpathentry kind="lib" path="/home/harshaky/Downloads/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="lib" path="/home/harshaky/Downloads/mysql-connector-java-8.0.17/mysql-connector-java-8.0.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
