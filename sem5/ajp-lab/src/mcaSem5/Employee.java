@@ -22,7 +22,6 @@ public class Employee {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver()); 
 			  
-            //Reference to connection interface 
             con = DriverManager.getConnection(url,user,pass); 
             
             System.out.println("Connected to db succesfully");
