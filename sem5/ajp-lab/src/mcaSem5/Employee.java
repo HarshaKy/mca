@@ -15,9 +15,9 @@ public class Employee {
 		Connection con = null;
 		Statement stmt = null;
 		
-		String url = "jdbc:mysql://localhost/student"; 
+		String url = "jdbc:mysql://localhost/assignment"; 
         String user = "root"; 
-        String pass = "student"; 
+        String pass = "password"; 
 		
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver()); 
