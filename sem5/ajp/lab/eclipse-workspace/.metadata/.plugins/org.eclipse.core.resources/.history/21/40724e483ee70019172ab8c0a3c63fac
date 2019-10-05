@@ -51,8 +51,8 @@ public class SessionInfo extends HttpServlet {
 		     out.println("Your Password is " + p);
 		     
 		     Integer accessCount;
-		     synchronized(session) {
-		    	 accessCount = (Integer)session.getAttribute("accessCount");
+		      synchronized(session) {
+		         accessCount = (Integer)session.getAttribute("accessCount");
 		         if (accessCount == null) {
 		            accessCount = 0;   // autobox int to Integer
 		         } else {
@@ -61,12 +61,12 @@ public class SessionInfo extends HttpServlet {
 		         session.setAttribute("accessCount", accessCount);
 		      }
 		      
-		      out.println("<h2>You have accessed this site " + accessCount + " times in this session.</h2>");
+		      out.println("<h2>You have access this site " + accessCount + " times in this session.</h2>");
 		         out.println("<p>(Session ID is " + session.getId() + ")</p>");
 		 
 		         out.println("<p>(Session creation time is " +
 		               new Date(session.getCreationTime()) + ")</p>");
-		         out.println("<p>(Session last accessed time is " +
+		         out.println("<p>(Session last access time is " +
 		               new Date(session.getLastAccessedTime()) + ")</p>");
 		         out.println("<p>(Session max inactive interval  is " +
 		               session.getMaxInactiveInterval() + " seconds)</p>");

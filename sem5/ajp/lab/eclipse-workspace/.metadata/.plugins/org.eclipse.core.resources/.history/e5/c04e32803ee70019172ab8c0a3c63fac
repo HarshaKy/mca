@@ -51,8 +51,8 @@ public class SessionInfo extends HttpServlet {
 		     out.println("Your Password is " + p);
 		     
 		     Integer accessCount;
-		     synchronized(session) {
-		    	 accessCount = (Integer)session.getAttribute("accessCount");
+		      synchronized(session) {
+		         accessCount = (Integer)session.getAttribute("accessCount");
 		         if (accessCount == null) {
 		            accessCount = 0;   // autobox int to Integer
 		         } else {
