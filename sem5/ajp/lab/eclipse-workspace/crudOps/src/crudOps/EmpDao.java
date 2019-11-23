@@ -16,7 +16,7 @@ public class EmpDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost/harsha", "root", "root");
-			System.out.println("Connected from jps success");
+			System.out.println("Connected from servlet successfully!");
 		} catch (Exception e) {
 			System.out.println(e);
 		}
